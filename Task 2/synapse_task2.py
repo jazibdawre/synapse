@@ -57,6 +57,7 @@ for ind in data.index:
         print(e)
 
 data = data.drop(index=dup)
+data = data.reset_index(drop=True)
 
 data_ind = data.copy()
 data_ind.drop_duplicates(subset="session_id", keep='first', inplace=True)
