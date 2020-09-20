@@ -78,3 +78,21 @@ data_ind['city'].value_counts().plot.bar(figsize=(500, 200))
 
 # Stats by amount
 data['amount'].plot.hist()
+
+# Amount by Gender
+m = 0
+f = 0
+u = 0
+
+for ind in data.index:
+    if data['event_name'][ind] == 'Fund Project':
+        if data['gender'][ind] == 'M':
+            m = m + data['amount'][ind]
+        if data['gender'][ind] == 'F':
+            f = f + data['amount'][ind]
+        if data['gender'][ind] == 'U':
+            u = u + data['amount'][ind]
+
+datadct = {'M': [m], 'F': [f], 'U': [u]}
+datav = pd.DataFrame(datadct, columns=['M', 'F', 'U'])
+datav.plot.bar()
